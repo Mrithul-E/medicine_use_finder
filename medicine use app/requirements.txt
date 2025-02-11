@@ -1,0 +1,6 @@
+Flask
+requests
+beautifulsoup4
+google-generativeai
+googlesearch-python
+Pillow
