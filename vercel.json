@@ -1,9 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "/app.app.py", "use": "@vercel/python" }
+    {
+      "src": "app/app.py", // Path to your app.py inside the app folder
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/app/app.py" }
+    {
+      "src": "/(.*)", // Catch-all route (important!)
+      "dest": "app/app.py" // Path to your app.py for routing
+    }
   ]
 }
