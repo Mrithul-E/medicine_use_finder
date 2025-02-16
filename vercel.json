@@ -4,14 +4,14 @@
     {
       "src": "app/app.py",
       "use": "@vercel/python",
-      "maxDuration": 30
+      "maxDuration": 60
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "app/app.py",
-      "maxDuration": 30
+      "maxDuration": 60
     }
   ]
 }
