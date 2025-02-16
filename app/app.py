@@ -87,5 +87,4 @@ def upload_image():
     text = perform_ocr(Image.open(image_data))
     return jsonify({"text": text})
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+
