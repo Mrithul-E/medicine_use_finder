@@ -1,5 +1,5 @@
 {
     "builds": [{"src": "app.py", "use": "@vercel/python"}],
-    "routes": [{"src": "/{.*}", "destination": "./app"}]
+    "routes": [{"src": "/{.*}", "dest": "./app"}]
 
 }
