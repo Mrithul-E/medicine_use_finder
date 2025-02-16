@@ -87,4 +87,7 @@ def upload_image():
     text = perform_ocr(Image.open(image_data))
     return jsonify({"text": text})
 
+@app.route("/hello")
+def disp_hello():
+  return "hello"
 
