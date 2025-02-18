@@ -240,20 +240,63 @@
             var fileInput = document.getElementById('image-upload').files[0];
             var extractBtn = document.getElementById('extract-btn');
 
+            if (!fileInput) {
+                alert('Please select an image.');
+                return;
+            }
+
             // Show loading on button
             extractBtn.classList.add('loading');
 
-            var formData = new FormData();
-            formData.append('image', fileInput);
+            var reader = new FileReader();
+            reader.readAsDataURL(fileInput);
+            reader.onload = function(event) {
+                var img = new Image();
+                img.src = event.target.result;
 
-            fetch('/upload_image', { method: 'POST', body: formData })
-            .then(response => response.json())
-            .then(data => { 
-                document.getElementById('medicine-name').value = data.text; 
-            })
-            .finally(() => {
-                extractBtn.classList.remove('loading');
-            });
+                img.onload = function() {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+
+                    var maxWidth = 800;  // Adjust max width
+                    var maxHeight = 800; // Adjust max height
+                    var width = img.width;
+                    var height = img.height;
+
+                    // Resize image while maintaining aspect ratio
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height *= maxWidth / width;
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width *= maxHeight / height;
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Convert to compressed JPEG
+                    canvas.toBlob(function(blob) {
+                        var formData = new FormData();
+                        formData.append('image', blob, 'compressed.jpg');
+
+                        fetch('/upload_image', { method: 'POST', body: formData })
+                        .then(response => response.json())
+                        .then(data => { 
+                            document.getElementById('medicine-name').value = data.text; 
+                        })
+                        .finally(() => {
+                            extractBtn.classList.remove('loading');
+                        });
+
+                    }, 'image/jpeg', 0.7); // Adjust quality (0.7 = 70%)
+                };
+            };
         }
     </script>
 
