@@ -49,6 +49,7 @@ def get_1mg_link(medicine_name):
 def get_website_markdown_AI(link):
     try:
         headers = {
+            'Authorization': 'Bearer jina_733595ba238c40748bef6ed035ec7efcOoYEQHMchILOSI95Thx6Zlhl-OPp',
             'X-Engine': 'direct',
             'X-Retain-Images': 'none'
         }
