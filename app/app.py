@@ -26,7 +26,7 @@ model = genai.GenerativeModel("gemini-1.5-pro",
 def perform_ocr(image_data):
     try:
         response = model.generate_content([
-            "OCR the medicine name from this image and provide only the name.",
+            "OCR the medicine name and the compositions names from this image and only output those data",
             image_data,
         ])
         return response.text.strip()
@@ -90,4 +90,3 @@ def upload_image():
 @app.route("/hello")
 def disp_hello():
   return "hello"
-
