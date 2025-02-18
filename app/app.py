@@ -48,7 +48,11 @@ def get_1mg_link(medicine_name):
 # Function to scrape required sections from 1mg
 def get_website_markdown_AI(link):
     try:
-        markdown_webpage = requests.get(f"https://r.jina.ai/{link}").text
+        headers = {
+            'X-Engine': 'direct',
+            'X-Retain-Images': 'none'
+        }
+        markdown_webpage = requests.get(f"https://r.jina.ai/{link}", headers=headers).text
         
         response = model.generate_content([
             "You are an AI designed to extract medicine usage details from Markdown text from input of the user and present them in a beautifully formatted, readable HTML output.  The HTML should prioritize clarity and use distinct text and background colors for enhanced readability.  All CSS styling must be done using classes and IDs with the text \"_AI\" added to it (e.g., .paragraph_AI, #title_AI); avoid styling HTML elements directly (e.g., p, h1). even the body tag should have id. The specific treatment the medicine is for should be prominently displayed at the top of the content.  Do not include details such as \"marketed by,\" FAQs, or other extraneous information. Focus solely on the core usage details.\n\nTry to make the theme constant",
