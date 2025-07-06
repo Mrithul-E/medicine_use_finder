@@ -3,6 +3,7 @@ import base64
 import os
 from google import genai
 from google.genai import types
+import json
 
 app = Flask(__name__)
 
@@ -189,7 +190,7 @@ def find_usage():
     print(type(medicine_image))
     if medicine_name or medicine_image:
         result = get_medicine_usage(medicine_name, medicine_image)
-        return jsonify(result)
+        return jsonify(json.loads(result))
     else:
         return jsonify({"error": "Please enter a name or upload an image."})
 
