@@ -38,10 +38,10 @@
 
     <div class="mb-3">
       <label for="image" class="form-label">Upload Image</label>
-      <input type="file" class="form-control" id="image" name="image" accept="image/*">
+      <input type="file" class="form-control" id="image" name="image" accept="image/*" capture="camera">
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
   <div id="result" class="d-none bg-light shadow rounded-4 mt-4 p-3 px-4">
@@ -50,11 +50,22 @@
 </div>
 
 <script>
+  $("#image").on('change', function () {
+    if (this.files[0]) {
+      $("#medicine_name").val("")
+    }
+  })
+
+  $("#medicine_name").on('input', function () {
+    $("#image").val("")
+  })
+
   $('#medicineForm').on('submit', function (e) {
     e.preventDefault();
 
     const formData = new FormData(this);
     const result = $('#result');
+
 
     result.removeClass('d-none alert-info alert-danger').addClass('alert alert-info').text('Loading...');
 
