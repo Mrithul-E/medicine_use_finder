@@ -4,8 +4,18 @@ import os
 from google import genai
 from google.genai import types
 import json
+from flask import send_from_directory
 
 app = Flask(__name__)
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
 
 def generate(medicine_name=None,medicine_img=None):
     if medicine_name:

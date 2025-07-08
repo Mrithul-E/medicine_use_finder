@@ -3,7 +3,25 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Medicine Usage Finder</title>
+  <title>Medicine Use Finder | Simple & Reliable Medicine Info</title>
+
+  <meta property="og:title" content="Medicine Use Finder">
+  <meta property="og:description" content="Find what a medicine is used for with simple, trusted info.">
+  <meta property="og:url" content="https://medicine-use-finder.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://medicine-use-finder.vercel.app/static/preview.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Medicine Use Finder">
+  <meta name="twitter:description" content="Find what a medicine is used for with simple, trusted info.">
+  <meta name="twitter:image" content="https://medicine-use-finder.vercel.app/static/preview.png">
+
+
+  <meta name="description"
+    content="Find out what any medicine is used for. Type or upload the medicine name and get simple, reliable info from trusted sources.">
+  <meta name="keywords" content="medicine usage, medicine info, drug use, find medicine use, medical search">
+  <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -35,7 +53,8 @@
       background-color: #0d6efd;
     }
 
-    html,body {
+    html,
+    body {
       height: 100%;
       margin: 0;
       padding: 0;
@@ -50,11 +69,22 @@
       flex: 1;
     }
   </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Medicine Use Finder",
+  "url": "https://medicine-use-finder.vercel.app",
+  "description": "Search and find what a medicine is used for in simple language.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "All"
+}
+</script>
 </head>
 
 <body class="bg-light">
 
-  <main>
+  <main class="d-flex flex-column flex-grow-1 justify-content-between">
     <div class="container mt-5 pt-4 pb-1 col-md-6 col-11 shadow rounded-4">
       <h3 class="text-center mb-4 text-primary"><b>Medicine Usage Finder</b></h3>
 
@@ -77,6 +107,13 @@
 
       </div>
     </div>
+    <div class="text-muted small mb-3 mx-3  text-center">
+      <small>
+        This tool helps you understand what any medicine is used for. Type or upload a medicine name to get simple usage
+        info powered by Google search, sourced from sites like Tata 1mg and Netmeds.
+      </small>
+    </div>
+
   </main>
 
   <footer class="text-white py-2 mt-auto">
@@ -94,7 +131,7 @@
           <i class="bi bi-envelope-at"></i> Email
         </a>
         <a href="https://stackoverflow.com/users/19938225/mrithul-e" target="_blank" rel="noopener noreferrer"
-          class="text-white me-3">
+          class="text-white me-3 text-nowrap">
           <i class="bi bi-stack-overflow"></i> Stack&nbsp;Overflow
         </a>
         <a href="https://www.threads.net/@mrithull_" target="_blank" rel="noopener noreferrer" class="text-white">
@@ -203,6 +240,15 @@
         }
       });
     });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SF48B37260"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-SF48B37260');
   </script>
 
 </body>
