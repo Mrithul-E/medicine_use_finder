@@ -5,8 +5,11 @@ from google import genai
 from google.genai import types
 import json
 from flask import send_from_directory
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+
+load_dotenv()
 
 @app.route('/sitemap.xml')
 def sitemap():
@@ -26,7 +29,7 @@ def generate(medicine_name=None,medicine_img=None):
                     data=medicine_img.read(),
                 )
     client = genai.Client(
-        api_key="AIzaSyCFmnOiCchqwYGRVKDw7PWkmGcJQNq414E"
+        api_key=os.getenv("API_KEY")
     )
 
     model = "gemini-2.5-flash-lite-preview-06-17"
