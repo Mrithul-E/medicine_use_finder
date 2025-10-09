@@ -3,11 +3,12 @@
   "short_name": "MediUseFinder", 
   "start_url": "/",
   "description": "Find used and details of a medicine easily and quickly through name or photo of the medicine.",
+  "display": "standalone",
   "icons": [
     {
-      "src": "icon500x500.png",
+      "src": "icon512x512.png",
       "type": "image/png",
-      "sizes": "500x500"
+      "sizes": "512x512"
     }
   ]
 }
