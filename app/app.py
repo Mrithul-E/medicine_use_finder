@@ -20,14 +20,15 @@ def robots():
     return send_from_directory('static', 'robots.txt')
 
 
-def generate(medicine_name=None,medicine_img=None):
+def generate(medicine_name=None, medicine_img=None, language_selector="en"):
     if medicine_name:
         AI_input = types.Part.from_text(text=f"""{medicine_name}""")
     elif medicine_img:
         AI_input = types.Part.from_bytes(
-                    mime_type=medicine_img.mimetype,
-                    data=medicine_img.read(),
-                )
+            mime_type=medicine_img.mimetype,
+            data=medicine_img.read(),
+        )
+
     client = genai.Client(
         api_key=os.getenv("API_KEY")
     )
@@ -83,6 +84,7 @@ def generate(medicine_name=None,medicine_img=None):
             role="user",
             parts=[
                 types.Part.from_text(text="""sdjasj"""),
+                types.Part.from_text(text=f"language_selector={language_selector}")
             ],
         ),
         types.Content(
@@ -96,12 +98,14 @@ def generate(medicine_name=None,medicine_img=None):
         types.Content(
             role="user",
             parts=[
-                AI_input
+                AI_input,
+                types.Part.from_text(text=f"language_selector={language_selector}")
             ],
         ),
     ]
+
     generate_content_config = types.GenerateContentConfig(
-        thinking_config = types.ThinkingConfig(
+        thinking_config=types.ThinkingConfig(
             thinking_budget=0,
         ),
         response_mime_type="text/plain",
@@ -110,6 +114,18 @@ def generate(medicine_name=None,medicine_img=None):
 The user will enter the name of a medicine, either typed or extracted from an image.
 
 Your job is to provide a simple, reliable, and JSON-formatted explanation of the medicine so that even a child can understand.
+
+Now there is a new field called **language_selector**.  
+- If language_selector = "en", respond in **English**.  
+- If language_selector = "hi", respond in **Hindi**.  
+- If language_selector = "ml", respond in **Malayalam**.  
+- If language_selector = "ta", respond in **Tamil**.  
+- If the language is not recognized, default to **English**.  
+
+Translate all text fields (except `error: null`) to the selected language naturally — not word-by-word — so it sounds simple and native.  
+Medicine names, brand names, and chemical names must **always stay in English**.
+
+---
 
 Instructions:
 - Always use Google Search to find what the medicine is mainly used for.  
@@ -173,6 +189,7 @@ fwjojofij
 """),
         ],
     )
+
     resp = ''
     for chunk in client.models.generate_content_stream(
         model=model,
@@ -181,28 +198,30 @@ fwjojofij
     ):
         print(chunk.text, end="")
         resp += chunk.text
-        
+
     return resp
+
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-def get_medicine_usage(medicine_name, medicine_image):
+def get_medicine_usage(medicine_name, medicine_image, language_code):
     if medicine_name:
-        response = generate(medicine_name=medicine_name)
+        response = generate(medicine_name=medicine_name, language_selector=language_code)
         return response
     elif medicine_image:
-        response = generate(medicine_img=medicine_image)
+        response = generate(medicine_img=medicine_image, language_selector=language_code)
         return response
 
 @app.route('/api/find-usage', methods=['POST'])
 def find_usage():
     medicine_name = request.form.get('medicine_name')
+    language_code = request.form.get('lang')
     medicine_image = request.files.get('image')
     print(type(medicine_image))
     if medicine_name or medicine_image:
-        result = get_medicine_usage(medicine_name, medicine_image)
+        result = get_medicine_usage(medicine_name, medicine_image, language_code)
         return jsonify(json.loads(result))
     else:
         return jsonify({"error": "Please enter a name or upload an image."})
