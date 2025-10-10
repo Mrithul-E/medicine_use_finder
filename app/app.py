@@ -124,6 +124,7 @@ Now there is a new field called **language_selector**.
 
 Translate all text fields (except `error: null`) to the selected language naturally — not word-by-word — so it sounds simple and native.  
 Medicine names, brand names, and chemical names must **always stay in English**.
+Even if the language is other than English, use English resources and responed the transilated version on the required language.
 
 Instructions:
 - Always use Google Search to find what the medicine is mainly used for.  
