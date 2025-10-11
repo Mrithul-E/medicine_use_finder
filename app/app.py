@@ -131,7 +131,7 @@ Instructions:
 - Prioritize trusted websites like Tata 1mg, Netmeds, Drugs.com, or Apollo Pharmacy.  
 - Use very simple language.  
 - Avoid complex medical terms, abbreviations, or chemical names unless needed.  
-- If the medicine may cause sleepiness, drowsiness, slow thinking, or delayed reaction, mention it clearly in the \"important_to_know\" field.  
+- If the medicine may cause sleepiness, drowsiness, slow thinking, or delayed reaction etc..., mention it clearly in the \"important_to_know\" field.  
 - Focus on what the medicine does, when it’s taken, and any important safety tips.  
 - If the medicine is not found, return only a JSON object with an \"error\" field and a short, friendly message.  
 - Always return a valid JSON object.
