@@ -111,158 +111,187 @@
 
 <body class="bg-light">
 
-  <main class="d-flex flex-column flex-grow-1 justify-content-between">
-    <div class="container mt-5 pt-4 pb-1 col-md-6 col-11 shadow rounded-4">
-      <h3 class="text-center mb-4 text-primary"><b>Medicine Usage Finder</b></h3>
-
-      <form id="medicineForm" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label for="medicine_name" class="form-label">Medicine Name</label>
-          <input type="text" class="form-control" id="medicine_name" name="medicine_name"
-            placeholder="e.g., Paracetamol">
-        </div>
-
-        <div class="mb-3">
-          <label for="image" class="form-label">Upload Image</label>
-          <input type="file" class="form-control" id="image" name="image" accept="image/*" capture="camera">
-        </div>
-
-        <div class="mb-3">
-          <select class="form-select form-select-sm" name="lang" aria-label=".form-select-sm example">
-            <option value="en" selected>Language</option>
-            <option value="hi">Hindi</option>
-            <option value="en">English</option>
-            <option value="ml">Malayalam</option>
-            <option value="ta">Tamil</option>
-          </select>
-        </div>
-
-        <div></div>
-
-        <button type="submit" class="btn btn-primary mb-2">Search</button>
-      </form>
-
-      <div id="result" class="d-none bg-light shadow rounded-4 mt-4 p-3 px-4">
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/"><b>Medicine Use Finder</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/privacy-policy">Privacy</a></li>
+          <li class="nav-item"><a class="nav-link" href="/terms">Terms</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        </ul>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-7 mx-auto">
-        <div class="text-muted small m-4 mb-3 text-center">
-          <small>
-            This tool helps you understand what any medicine is used for. Type or upload a medicine name to get
-            simple
-            usage
-            info powered by Google search, sourced from sites like Tata 1mg and Netmeds.
-          </small>
+  </nav>
+
+  <main class="d-flex flex-column flex-grow-1">
+    <!-- Hero Section -->
+    <header class="bg-primary text-white text-center pt-5 pb-5 mb-0"
+      style="margin-top: 56px; min-height: 40vh; display: flex; align-items: center;">
+      <div class="container mt-4">
+        <h1 class="display-4 mb-3"><b>Find What Your Medicine is For</b></h1>
+        <p class="lead mb-5 opacity-75">Simple, reliable information about common medicines at your fingertips.</p>
+      </div>
+    </header>
+
+    <div class="container mb-5" style="margin-top: -80px; position: relative; z-index: 10;">
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6 col-11 shadow-lg rounded-4 p-4 p-md-5 bg-white border">
+          <h3 class="text-center mb-4 text-primary">Medicine Usage Finder</h3>
+
+          <form id="medicineForm" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="medicine_name" class="form-label"><b>Medicine Name</b></label>
+              <input type="text" class="form-control" id="medicine_name" name="medicine_name"
+                placeholder="e.g., Paracetamol, Cetirizine">
+            </div>
+
+            <div class="mb-3 text-center">
+              <span class="text-muted small">OR</span>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label"><b>Upload Image/Prescription</b></label>
+              <input type="file" class="form-control" id="image" name="image" accept="image/*" capture="camera">
+            </div>
+
+            <div class="mb-3">
+              <label for="lang" class="form-label"><b>Response Language</b></label>
+              <select class="form-select" id="lang" name="lang">
+                <option value="en" selected>English</option>
+                <option value="hi">Hindi (हिन्दी)</option>
+                <option value="ml">Malayalam (മലയാളം)</option>
+                <option value="ta">Tamil (தமிழ்)</option>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">Search Now</button>
+            </div>
+          </form>
+
+          <div id="result" class="d-none bg-light shadow rounded-4 mt-4 p-3 px-4">
+
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="container-fluid">
+    <!-- Educational Sections -->
+    <section class="container mb-5">
       <div class="row">
-        <div class="col-md-7 mx-auto">
-          <div class="accordion d-grid gap-1" id="accordionFAQ">
-            <h3 class="my-2 mt-4">FAQ</h3>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faqOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
-                  Is Medicine Use Finder a replacement for a doctor?
-                </button>
-              </h2>
-              <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne"
-                data-bs-parent="#accordionFAQ">
-                <div class="accordion-body">
-                  No. This website only provides general educational information. It does not replace professional
-                  medical consultation. Always seek advice from a qualified doctor.
-                </div>
-              </div>
+        <!-- Safety Tips -->
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4">
+            <div class="card-body p-4">
+              <h3 class="card-title text-primary mb-4"><i class="bi bi-shield-check"></i> Medicine Safety Tips</h3>
+              <ul class="list-unstyled">
+                <li class="mb-3 d-flex">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span><b>Always Read Labels:</b> Check the expiry date and dosage instructions carefully.</span>
+                </li>
+                <li class="mb-3 d-flex">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span><b>Avoid Self-Medication:</b> Use this tool for information, but always follow a doctor's
+                    prescription.</span>
+                </li>
+                <li class="mb-3 d-flex">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span><b>Complete the Course:</b> If prescribed antibiotics, complete the full course even if you feel
+                    better.</span>
+                </li>
+                <li class="mb-3 d-flex">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span><b>Storage Matters:</b> Keep medicines in a cool, dry place away from direct sunlight.</span>
+                </li>
+              </ul>
             </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faqTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
-                  Can I take medicines based on this website?
-                </button>
-              </h2>
-              <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo"
-                data-bs-parent="#accordionFAQ">
-                <div class="accordion-body">
-                  No. You should never self-medicate without proper medical guidance. This tool is for awareness
-                  and
-                  learning purposes only.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faqThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
-                  Is the information on this website always accurate?
-                </button>
-              </h2>
-              <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree"
-                data-bs-parent="#accordionFAQ">
-                <div class="accordion-body">
-                  We try to provide correct and up-to-date information, but this website cannot guarantee complete
-                  accuracy. Always confirm with a healthcare professional.
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="faqFour">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
-                  Does this website collect personal data?
-                </button>
-              </h2>
-              <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqFour"
-                data-bs-parent="#accordionFAQ">
-                <div class="accordion-body">
-                  We do not collect personal information. Third-party services like Google AdSense may use cookies
-                  to
-                  show relevant advertisements.
-                </div>
-              </div>
-            </div>
-
           </div>
+        </div>
 
-          <div class="accordion d-grid gap-1" id="accordionInfo">
-            <h3 class="my-2 mt-4">Disclaimer</h3>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="infoTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#infoCollapseTwo" aria-expanded="false" aria-controls="infoCollapseTwo">
-                  Medical Disclaimer
-                </button>
-              </h2>
-              <div id="infoCollapseTwo" class="accordion-collapse collapse" aria-labelledby="infoTwo"
-                data-bs-parent="#accordionInfo">
-                <div class="accordion-body">
-                  The information on this website is for general informational purposes only and does not replace
-                  professional medical advice.
+        <!-- Common Categories -->
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm border-0 rounded-4">
+            <div class="card-body p-4">
+              <h3 class="card-title text-primary mb-4"><i class="bi bi-capsule"></i> Common Drug Types</h3>
+              <div class="row g-2">
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Antipyretics (Fever)</span>
+                </div>
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Analgesics (Pain)</span>
+                </div>
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Antibiotics
+                    (Infection)</span></div>
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Antihistamines
+                    (Allergies)</span></div>
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Antacids (Acidity)</span>
+                </div>
+                <div class="col-6"><span class="badge bg-light text-dark p-2 w-100 border">Antivirals (Viruses)</span>
                 </div>
               </div>
+              <p class="mt-4 text-muted small">Each medicine belongs to a class based on its chemical structure and how
+                it works in the body.</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="infoOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#infoCollapseOne" aria-expanded="true" aria-controls="infoCollapseOne">
-                  About This Website
-                </button>
-              </h2>
-              <div id="infoCollapseOne" class="accordion-collapse collapse" aria-labelledby="infoOne"
-                data-bs-parent="#accordionInfo">
-                <div class="accordion-body">
-                  This website is designed to provide general information about the common uses of medicines. It
-                  is
-                  intended for educational purposes only.
+    <!-- FAQ Section -->
+    <div class="container-fluid bg-white py-5 border-top border-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <div class="accordion accordion-flush" id="accordionFAQ">
+              <div class="accordion-item border rounded-3 mb-3">
+                <h2 class="accordion-header" id="faqOne">
+                  <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                    <b>Is Medicine Use Finder a replacement for a doctor?</b>
+                  </button>
+                </h2>
+                <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqOne"
+                  data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    No. This website only provides general educational information about medicines and their common
+                    uses. It does not replace professional medical consultation, diagnosis, or treatment. Always
+                    seek advice from a qualified doctor.
+                  </div>
+                </div>
+              </div>
+              <!-- Repeat for other FAQs with better styling -->
+              <div class="accordion-item border rounded-3 mb-3">
+                <h2 class="accordion-header" id="faqTwo">
+                  <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                    <b>Can I take medicines based on this website?</b>
+                  </button>
+                </h2>
+                <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo"
+                  data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    No. You should never self-medicate or change your dosage based on information found online.
+                    This tool is for awareness and learning purposes only.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item border rounded-3 mb-3">
+                <h2 class="accordion-header" id="faqThree">
+                  <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                    <b>Is the information accurate?</b>
+                  </button>
+                </h2>
+                <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree"
+                  data-bs-parent="#accordionFAQ">
+                  <div class="accordion-body">
+                    We use advanced AI and reputable medical search sources to provide data. However, medical info
+                    can change, and errors may occur. Always verify with your pharmacist or doctor.
+                  </div>
                 </div>
               </div>
             </div>
@@ -271,94 +300,100 @@
       </div>
     </div>
 
-  </main>
-
-  <footer class="text-white py-2 mt-3">
-    <div class="container text-center">
-      <div class="mb-2">Made with <i class="bi bi-heart-fill text-danger"></i> in India by
-        <strong>Mrithul</strong>
+    <footer class="text-white py-4 mt-auto">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 text-center text-md-start mb-3 mb-md-0">
+            <h5 class="mb-1">Medicine Use Finder</h5>
+            <p class="small mb-0 opacity-75">Reliable information for better health awareness.</p>
+          </div>
+          <div class="col-md-4 text-center mb-3 mb-md-0">
+            <div class="mb-2">
+              <a href="/about" class="text-white mx-2 small text-decoration-none">About</a>
+              <a href="/privacy-policy" class="text-white mx-2 small text-decoration-none">Privacy</a>
+              <a href="/terms" class="text-white mx-2 small text-decoration-none">Terms</a>
+              <a href="/contact" class="text-white mx-2 small text-decoration-none">Contact</a>
+            </div>
+            <p class="small mb-0 opacity-75">Made with <i class="bi bi-heart-fill text-danger mx-1"></i> in India by
+              <b>Mrithul</b>
+            </p>
+          </div>
+          <div class="col-md-4 text-center text-md-end">
+            <div class="fs-5">
+              <a href="https://github.com/Mrithul-E" target="_blank" class="text-white me-3 text-decoration-none"><i
+                  class="bi bi-github"></i></a>
+              <a href="https://www.instagram.com/mrithull_" target="_blank"
+                class="text-white me-3 text-decoration-none"><i class="bi bi-instagram"></i></a>
+              <a href="mailto:mrithul100@gmail.com" class="text-white text-decoration-none"><i
+                  class="bi bi-envelope-at"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-3 opacity-25">
+        <div class="text-center small opacity-50">
+          &copy; 2026 Medicine Use Finder. All rights reserved.
+        </div>
       </div>
-      <div class="mb-2">
-        <a href="https://github.com/Mrithul-E" target="_blank" rel="noopener noreferrer" class="text-white me-3">
-          <i class="bi bi-github"></i> GitHub
-        </a>
-        <a href="https://www.instagram.com/mrithull_" target="_blank" rel="noopener noreferrer" class="text-white me-3">
-          <i class="bi bi-instagram"></i> Instagram
-        </a>
-        <a href="mailto:mrithul100@gmail.com" class="text-white me-3">
-          <i class="bi bi-envelope-at"></i> Email
-        </a>
-        <a href="https://stackoverflow.com/users/19938225/mrithul-e" target="_blank" rel="noopener noreferrer"
-          class="text-white me-3 text-nowrap">
-          <i class="bi bi-stack-overflow"></i> Stack&nbsp;Overflow
-        </a>
-        <a href="https://www.threads.net/@mrithull_" target="_blank" rel="noopener noreferrer" class="text-white">
-          <i class="bi bi-threads"></i> Threads
-        </a>
-      </div>
+    </footer>
+
+    <script>
+      $("#image").on('change', function () {
+        if (this.files[0]) {
+          $("#medicine_name").val("")
+        }
+      })
+
+      $("#medicine_name").on('input', function () {
+        $("#image").val("")
+      })
+
+      $('#medicineForm').on('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const result = $('#result');
+        const imageFile = document.querySelector('#image').files[0];
 
 
-    </div>
-  </footer>
+        result.removeClass('d-none alert-info alert-danger').addClass('alert alert-info').text('Loading...');
 
-  <script>
-    $("#image").on('change', function () {
-      if (this.files[0]) {
-        $("#medicine_name").val("")
-      }
-    })
+        if (imageFile) {
+          result.text('Compressing image...');
+          const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 1920,
+            useWebWorker: true
+          }
 
-    $("#medicine_name").on('input', function () {
-      $("#image").val("")
-    })
-
-    $('#medicineForm').on('submit', async function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(this);
-      const result = $('#result');
-      const imageFile = document.querySelector('#image').files[0];
-
-
-      result.removeClass('d-none alert-info alert-danger').addClass('alert alert-info').text('Loading...');
-
-      if (imageFile) {
-        result.text('Compressing image...');
-        const options = {
-          maxSizeMB: 1,
-          maxWidthOrHeight: 1920,
-          useWebWorker: true
+          try {
+            const compressedFile = await imageCompression(imageFile, options);
+            formData.set('image', compressedFile, compressedFile.name);
+            console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
+            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
+          } catch (error) {
+            console.log(error);
+            result.addClass('alert alert-danger').text('Image compression failed. Please try again.');
+            return;
+          }
         }
 
-        try {
-          const compressedFile = await imageCompression(imageFile, options);
-          formData.set('image', compressedFile, compressedFile.name);
-          console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-          console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`);
-        } catch (error) {
-          console.log(error);
-          result.addClass('alert alert-danger').text('Image compression failed. Please try again.');
-          return;
-        }
-      }
+        result.text('Searching...');
 
-      result.text('Searching...');
-
-      $.ajax({
-        url: '/api/find-usage',
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-          // response = JSON.parse(response)
+        $.ajax({
+          url: '/api/find-usage',
+          method: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            // response = JSON.parse(response)
 
 
-          result.removeClass('d-none alert-info');
-          if (response.error) {
-            result.addClass('alert alert-danger').text(response.error);
-          } else {
-            result.html(`
+            result.removeClass('d-none alert-info');
+            if (response.error) {
+              result.addClass('alert alert-danger').text(response.error);
+            } else {
+              result.html(`
           <h4 class="text-center mt-2 mb-4"><b>🩺 Medicine Overview</b></h4>
 
           <div class="mb-4">
@@ -414,14 +449,14 @@
             ⚠️ This information is for general understanding only and is not medical advice. Always consult a doctor or pharmacist before using any medicine.
           </div>
           `)
+            }
+          },
+          error: function () {
+            result.removeClass('d-none').addClass('alert-danger').text('Something went wrong.');
           }
-        },
-        error: function () {
-          result.removeClass('d-none').addClass('alert-danger').text('Something went wrong.');
-        }
+        });
       });
-    });
-  </script>
+    </script>
 
 </body>
 

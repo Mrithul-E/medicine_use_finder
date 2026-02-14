@@ -88,6 +88,22 @@ def generate(medicine_name=None, medicine_img=None, language_selector="en"):
 def index():
     return render_template('index.html')
 
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy_policy.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
 def get_medicine_usage(medicine_name, medicine_image, language_code):
     if medicine_name:
         response = generate(medicine_name=medicine_name, language_selector=language_code)
